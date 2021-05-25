@@ -29,7 +29,7 @@ Plus, Botkit works with all the NLP services (like Microsoft LUIS and IBM Watson
 * [Twilio SMS Messaging](docs/readme-twiliosms.md)
 * [Twilio IP Messaging](docs/readme-twilioipm.md)
 * [Microsoft Bot Framework](docs/readme-botframework.md)
-* [Glip](readme-glip.md)
+* [RingCentral Team Messaging](readme-rc.md)
 * Yours? [info@howdy.ai](mailto:info@howdy.ai)
 Botkit is a Node.js module, and works with Node and npm.
 
@@ -68,7 +68,7 @@ are ready to submit to [Cisco Spark's Depot app store](https://depot.ciscospark.
 > ### [Facebook Bot Starter Kit](https://github.com/howdyai/botkit-starter-facebook)
 > The Facebook starter kit contains all the code necessary to stand up a Facebook bot on either Facebook Messenger, or Facebook Work Chat. With just a few pieces of configuration, set up a bot that automatically responds to messages sent to your Facebook page.
 > #### [![Remix on Glitch](docs/glitch.png)](https://glitch.com/edit/#!/import/github/howdyai/botkit-starter-facebook)
-If you intend to create a bot that lives in Glip, [follow these instructions for configuring your Glip bot](readme-glip.md#getting-started).
+If you intend to create a bot that lives in RingCentral Team Messaging, [follow these instructions for configuring your bot](readme-rc.md#getting-started).
 
 If you intend to create a bot that lives inside a Twilio IP Messaging client, [follow these instructions for configuring your app](readme-twilioipm.md#getting-started).
 > #### [![Remix on Glitch](docs/glitch.png)](https://glitch.com/~botkit-facebook)
@@ -192,7 +192,7 @@ controller.middleware.send.use(function(bot, message, next) {
   * [Twilio SMS](docs/readme-twiliosms.md)
   * [Twilio IPM](docs/readme-twilioipm.md)
   * [Microsoft Bot Framework](docs/readme-botframework.md)
-  * [Glip Messaging](https://developer.ringcentral.com/library/getting-started.html)
+  * [RingCentral Team Messaging](https://developer.ringcentral.com/guide/)
 
   * [Web and Apps](https://botkit.ai/docs/readme-web.html)
   * [Slack](https://botkit.ai/docs/readme-slack.html)
@@ -203,7 +203,7 @@ controller.middleware.send.use(function(bot, message, next) {
   * [Twilio SMS](https://botkit.ai/docs/readme-twiliosms.html)
   * [Twilio IPM](https://botkit.ai/docs/readme-twilioipm.html)
   * [Microsoft Bot Framework](https://botkit.ai/docs/readme-botframework.html)
-  * [Glip Messaging](https://developer.ringcentral.com/library/getting-started.html)
+  * [RingCentral Team Messaging](https://developer.ringcentral.com/guide/)
   * [Extending Botkit with Plugins and Middleware](https://botkit.ai/docs/middleware.html)
   * [Message Pipeline](https://botkit.ai/docs/readme-pipeline.html)
   * [List of current plugins](https://botkit.ai/docs/readme-middlewares.html)

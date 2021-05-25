@@ -20,9 +20,9 @@ if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.PORT) {
     process.exit(1);
 }
 
-var controller = Botkit.glipbot({
+var controller = Botkit.ringcentralbot({
     debug: true
-}).configureGlipApp({
+}).configureRingCentralApp({
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     redirectUri: process.env.REDIRECT_HOST,
@@ -73,7 +73,7 @@ controller.hears(['uptime'],'message_received',function(bot, message) {
     var hostname = os.hostname();
     var uptime = formatUptime(process.uptime());
     bot.reply(message,'I am a bot! I have been running for ' + uptime + ' on ' + hostname + '.');
-    //console.log('Access Token =' + controller.configureGlipApp().accessToken);
+    //console.log('Access Token =' + controller.configureRingCentralApp().accessToken);
 });
 
 // Usage: question me

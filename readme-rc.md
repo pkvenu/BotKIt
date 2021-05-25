@@ -1,11 +1,10 @@
-# Botkit and Glip
+# Botkit and RingCentral Team Messaging
 
-Botkit is designed to ease the process of designing and running useful, creative bots that live inside [Glip](https://glip.com).
+Botkit is designed to ease the process of designing and running useful, creative bots that live inside [RingCentral Team Messaging](https://app.ringcentral.com).
 
-Built in to [Botkit](https://howdy.ai/botkit/) are a comprehensive set of features and tools to deal with [Glip](https://botframework.com), allowing developers to build interactive bots and applications that send and receive messages 
-just like real humans.
+Built in to [Botkit](https://howdy.ai/botkit/) are a comprehensive set of features and tools to deal with [RingCentral Team Messaging](https://botframework.com), allowing developers to build interactive bots and applications that send and receive messages just like real humans.
 
-This document covers the glip implementation details only. [Start here](readme.md) if you want to learn about to develop with Botkit.
+This document covers the RingCentral implementation details only. [Start here](readme.md) if you want to learn about to develop with Botkit.
 
 Table of Contents
 
@@ -22,26 +21,26 @@ Table of Contents
 
 3) Create a .env file with the attributes below and update account information 
   ```
-    GLIP_SERVER=https://platform.devtest.ringcentral.com
-    GLIP_APPKEY= sandbox app key
-    GLIP_APPSECRET= sandbox app secret
-    GLIP_USERNAME= sandbox phonenumber
-    GLIP_PASSWORD= sandbox password
-    GLIP_EXTENSION=
-    GLIP_PORT=4000
+    RINGCENTRAL_SERVER=https://platform.devtest.ringcentral.com
+    RINGCENTRAL_APPKEY= sandbox app key
+    RINGCENTRAL_APPSECRET= sandbox app secret
+    RINGCENTRAL_USERNAME= sandbox phonenumber
+    RINGCENTRAL_PASSWORD= sandbox password
+    RINGCENTRAL_EXTENSION=
+    RINGCENTRAL_PORT=4000
   ```
 
 4) Run the example bot using the parameters mentioned above. 
 
 ```
-node glip_bot.js
+node rc_bot.js
 ```    
 
 5) Now create another RingCentral free developer account by following #2. This account will be used to invoke the bot. 
 
-6) Go to **glip.devtest.ringcentral.com** and signin with the newly created RingCentral account. 
+6) Go to **app.devtest.ringcentral.com** and signin with the newly created RingCentral account. 
    
-6) Enter the **username**, **password** and **extension** to login to glip.
+6) Enter the **username**, **password** and **extension** to login to RingCentral.
      
 7) Invite the bot using the email address.
 
@@ -52,7 +51,7 @@ Try the following commands:
   * pizzatime
 
 
-## Glip Specific Events
+## RingCentral Team Messaging-specific Events
 
 Once connected to the Bot Framework, bots receive a constant stream of events.
 
@@ -62,18 +61,18 @@ Normal messages will be sent to your bot using the `message_received` event.  In
 |--- |---
 | message_received | A message was received by the bot. 
 
-All incoming events will contain the fields `user` and `channel`, both of which represent the glip user's ID, and a `groupid` field.
+All incoming events will contain the fields `user` and `channel`, both of which represent the user's ID, and a `groupid` field.
 
 `message_received` events will also contain either a `text` field or an `attachment` field.
 
 
-## Working with Glip
+## Working with RingCentral Team Messaging
 
-Botkit receives messages from the glip adapters using pubnub subscriptions, and posts messages to glip using APIs. This means that your bot application must present a web server that is publicly addressable. Everything you need to get started is already included in Botkit.
+Botkit receives messages from the RingCentral adapters using pubnub subscriptions, and posts messages to RingCentral using APIs. This means that your bot application must present a web server that is publicly addressable. Everything you need to get started is already included in Botkit.
 
-To connect your bot to Glip follow the step by step guide outlined in [Getting Started](#getting-started).
+To connect your bot to RingCentral follow the step by step guide outlined in [Getting Started](#getting-started).
 
-Here is the complete code for a basic Glip bot:
+Here is the complete code for a basic RingCentral Team Messaging bot:
 
 ```javascript
 var Botkit = require('./lib/Botkit.js');
@@ -81,20 +80,19 @@ var os = require('os');
 var http = require('http');
 var request = require('request');
 
-
-var controller = Botkit.glipbot({
+var controller = Botkit.rcbot({
     debug: false,
 });
 
 var bot = controller.spawn({
-    server: process.env.GLIP_SERVER,
-    appKey: process.env.GLIP_APPKEY,
-    appSecret: process.env.GLIP_APPSECRET,
-    appName: 'GlipDemo',
+    server: process.env.RINGCENTRAL_SERVER,
+    appKey: process.env.RINGCENTRAL_APPKEY,
+    appSecret: process.env.RINGCENTRAL_APPSECRET,
+    appName: 'RingCentralDemo',
     appVersion: '1.0.0',
-    username: process.env.GLIP_USERNAME,
-    password: process.env.GLIP_PASSWORD,
-    extension: process.env.GLIP_EXTENSION,
+    username: process.env.RINGCENTRAL_USERNAME,
+    password: process.env.RINGCENTRAL_PASSWORD,
+    extension: process.env.RINGCENTRAL_EXTENSION,
 }).startRTM();
 
 // if you are already using Express, you can use your own server instance...
@@ -149,12 +147,13 @@ var askWhereDeliver = function(response, convo) {
     });
 }
 ```
-#### Botkit.glipbot()
+#### Botkit.rcbot()
+
 | Argument | Description
 |---  |---
 | settings | Options used to configure the bot.  
 
-Creates a new instance of the bots controller.  The controller will create a new instance of the GlipConnector. so any options needed to configure the glip should be passed in via the `settings` argument.
+Creates a new instance of the bots controller.  The controller will create a new instance of the RingCentralConnector. Therefore, any options needed to configure the RingCentral bot should be passed in via the `settings` argument.
 
 #### controller.setupWebserver()
 | Argument | Description
@@ -173,7 +172,7 @@ which may be used to add further web server routes.
 
 #### controller.createWebhookEndpoints()
 
-This function configures the route `https://_your_server_/glip/receive`
-to receive webhooks from glip.
+This function configures the route `https://_your_server_/ringcentral/receive`
+to receive webhooks from RingCentral.
 
 
